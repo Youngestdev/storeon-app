@@ -8,7 +8,6 @@ const Todos = () => {
         <div>
             <input type="text" />
             <button onClick={() => dispatch('addTodo', "")}>Add Todo :) </button>
-            {/* {alert(todos)} */}
             {todos.map(t => <RenderTodo todo={t} /> )}
         </div>
     )
