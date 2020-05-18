@@ -1,0 +1,30 @@
+{
+  "name": "storeon-app",
+  "version": "1.0.0",
+  "description": "A simple demonstration app",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "react-scripts start"
+  },
+  "repository": "https://github.com/Youngestdev/storeon-app.git",
+  "author": "Abdulazeez Abdulazeez Adeshina <youngestdev@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.1",
+    "storeon": "^2.0.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
