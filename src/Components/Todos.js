@@ -6,7 +6,7 @@ const Todos = () => {
     const [value, setValue] = React.useState("")
 
     const deleteTodo = id => {
-        dispatch('deleteTodo, id')
+        dispatch('deleteTodo', id)
     }
 
     const submit = () => {
@@ -23,10 +23,10 @@ const Todos = () => {
             <input type="text" onChange={handleInput} value={value}/>
             <button onClick={() => submit()}>Add Todo :) </button>
             {todos.map(todo =>
-                // TODO: Add an update functionality as a bonus
+                // TODO: Add an update todo functionality as a bonus
                 <ul>
                     <li key={todo.id}>{todo.item}</li>
-                    <button onClick={deleteTodo(todo.id)}>Delete todo</button>
+                    <button onClick={() => deleteTodo(todo.id)}>Delete todo</button>
                 </ul>
             )}
         </div>
