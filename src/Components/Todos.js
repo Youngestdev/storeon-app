@@ -5,6 +5,9 @@ const Todos = () => {
     const {dispatch, todos } = useStoreon('todos')
     const [value, setValue] = React.useState("")
 
+    const deleteTodo = id => {
+        dispatch('deleteTodo, id')
+    }
 
     const submit = () => {
         dispatch('addTodo', value)
@@ -19,16 +22,14 @@ const Todos = () => {
         <div>
             <input type="text" onChange={handleInput} value={value}/>
             <button onClick={() => submit()}>Add Todo :) </button>
-            {todos.map(t => <RenderTodo todo={t} /> )}
+            {todos.map(todo =>
+                // TODO: Add an update functionality as a bonus
+                <ul>
+                    <li key={todo.id}>{todo.item}</li>
+                    <button onClick={deleteTodo(todo.id)}>Delete todo</button>
+                </ul>
+            )}
         </div>
-    )
-}
-
-const RenderTodo = ( { todo } ) => {
-    return (
-        <ul>
-            <li key={todo.id}>{todo.item}</li>            
-        </ul>
     )
 }
 
