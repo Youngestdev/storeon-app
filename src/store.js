@@ -1,15 +1,10 @@
-// @ts-ignore
-
-import React from "react";
 import { createStoreon } from "storeon";
 
 let todos = store => {
-    store.on('@init', () => ({ todos: ["Follow come todo lol.", "Uhm. It works sha"] }))
-
-    store.on('addTodo', ({ todos }, todo) => ({ todos: todos.concat([todo])}))
+    store.on('@init', () => ({ todos: [{id: 1, item:"Follow come todo lol."}, {id: 2, item: "Uhm. It works sha"}] }))
+    store.on('addTodo', ({ todos }, todo) => ({ todos: todos.concat([{id: todos.length, item: todo}])}))
 }
 
 const store = createStoreon([todos])
-// const todoStore = createStoreon([])
 
 export default store;

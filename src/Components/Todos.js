@@ -3,11 +3,22 @@ import { useStoreon } from 'storeon/react';
 
 const Todos = () => {
     const {dispatch, todos } = useStoreon('todos')
-    // TODO: Use the @dispatch event handler to set the value for the incoming todo.
+    const [value, setValue] = React.useState("")
+
+
+    const submit = () => {
+        dispatch('addTodo', value)
+        setValue("")
+    }
+
+    const handleInput = (e) => {
+        setValue(e.target.value)
+    }
+
     return (
         <div>
-            <input type="text" />
-            <button onClick={() => dispatch('addTodo', "")}>Add Todo :) </button>
+            <input type="text" onChange={handleInput} value={value}/>
+            <button onClick={() => submit()}>Add Todo :) </button>
             {todos.map(t => <RenderTodo todo={t} /> )}
         </div>
     )
@@ -16,7 +27,7 @@ const Todos = () => {
 const RenderTodo = ( { todo } ) => {
     return (
         <ul>
-            <li>{todo}</li>            
+            <li key={todo.id}>{todo.item}</li>            
         </ul>
     )
 }
