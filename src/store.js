@@ -1,12 +1,17 @@
 import { createStoreon } from "storeon";
 import { storeonDevtools } from 'storeon/devtools';
+import { v4 as uuidv4 } from 'uuid';
 
-let todos = store => {
-    store.on('@init', () => ({ todos: [{id: 1, item:"Follow come todo lol."}, {id: 2, item: "Uhm. It works sha"}] }))
-    store.on('addTodo', ({ todos }, todo) => ({ todos: todos.concat([{id: todos.length, item: todo}])}))
-    store.on('deleteTodo', ({ todos }, id) => ({ todos: todos.filter(todo => todo.id !== id) }))
+let notes = store => {
+    store.on('@init', () => ({ notes: [{id: uuidv4(), item:"Follow come todo lol."}, {id: uuidv4(), item: "Uhm. It works sha"}] }))
+    store.on('addNote', ({ notes }, note) => {
+        return {
+            notes: [ ...notes, {id: uuidv4(), item: note}]
+        }
+    })
+    store.on('deleteNote', ({ notes }, id) => ({ notes: notes.filter(note => note.id !== id) }))
 }
 
-const store = createStoreon([todos, process.env.NODE_ENV !== 'production' && storeonDevtools])
+const store = createStoreon([notes, process.env.NODE_ENV !== 'production' && storeonDevtools])
 
 export default store;

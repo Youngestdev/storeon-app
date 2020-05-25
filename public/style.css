@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+.box {
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.3);
+    transition: 0.2s;
+    display: inline-flex;
+    padding: 5px 25px;
+}
+
+li {
+    list-style-type: none;
+}
+
+textarea {
+    border: 2px double;
+    height: 100px;
+    width: 200px;
+    padding: 5px 25px;
+}
+
+button {
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px 25px;
+    font-style: inherit;
+}
+
+.box:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    padding: 12px 46px;
+}

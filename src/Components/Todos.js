@@ -1,36 +1,40 @@
 import React from "react";
 import { useStoreon } from 'storeon/react';
 
-const Todos = () => {
-    const {dispatch, todos } = useStoreon('todos')
+//TODO: TURN THE APP INTO A FULL APP
+
+    const Todos = () => {
+    const {dispatch, notes } = useStoreon('notes')
     const [value, setValue] = React.useState("")
 
-    const deleteTodo = id => {
-        dispatch('deleteTodo', id)
+    const deleteNote= id => {
+        dispatch('deleteNote', id)
     }
 
     const submit = () => {
-        dispatch('addTodo', value)
+        dispatch('addNote', value)
         setValue("")
     }
 
     const handleInput = (e) => {
         setValue(e.target.value)
     }
-
     return (
-        <div>
-            <input type="text" onChange={handleInput} value={value}/>
-            <button onClick={() => submit()}>Add Todo :) </button>
-            {todos.map(todo =>
-                // TODO: Add an update todo functionality as a bonus
-                <ul>
-                    <li key={todo.id}>{todo.item}</li>
-                    <button onClick={() => deleteTodo(todo.id)}>Delete todo</button>
-                </ul>
-            )}
-        </div>
+        <>
+            <textarea onChange={handleInput} value={value}/><br/>
+            <button onClick={() => submit()}> Add A Note </button>
+            <hr />
+            <ul>
+                {notes.map(note => (
+                    <div className="box">
+                        <div className="container">
+                            <li key={note.id}>{note.item}</li><br />
+                            <button onClick={() => deleteNote(note.id)}>Delete note</button>
+                        </div>
+                    </div>
+                ))}
+            </ul>
+        </>
     )
 }
-
 export default Todos;
