@@ -1,4 +1,5 @@
 import { createStoreon } from "storeon";
+import { persistState } from '@storeon/localstorage'
 import { storeonDevtools } from 'storeon/devtools';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -12,6 +13,8 @@ let notes = store => {
     store.on('deleteNote', ({ notes }, id) => ({ notes: notes.filter(note => note.id !== id) }))
 }
 
-const store = createStoreon([notes, process.env.NODE_ENV !== 'production' && storeonDevtools])
+const store = createStoreon([notes,
+    persistState(['notes']),
+    process.env.NODE_ENV !== 'production' && storeonDevtools])
 
 export default store;
