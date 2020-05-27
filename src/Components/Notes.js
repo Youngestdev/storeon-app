@@ -3,7 +3,7 @@ import { useStoreon } from 'storeon/react';
 
 //TODO: TURN THE APP INTO A FULL APP
 
-const Todos = () => {
+const Notes = () => {
   const { dispatch, notes } = useStoreon('notes');
   const [value, setValue] = React.useState('');
 
@@ -41,4 +41,4 @@ const Todos = () => {
     </section>
   );
 };
-export default Todos;
+export default Notes;

@@ -6,8 +6,8 @@ import { v4 as uuidv4 } from 'uuid';
 let notes = store => {
   store.on('@init', () => ({
     notes: [
-      { id: uuidv4(), item: 'Follow come todo lol.' },
-      { id: uuidv4(), item: 'Uhm. It works sha' },
+      { id: uuidv4(), item: 'Storeon is a React state management library and unlike other state management libraries which uses Context, it utilises an event-driven approach like Redux.' },
+      { id: uuidv4(), item: 'This is a really short note. I have began to study the basic concepts of technical writing and I\'m optimistic about becoming one of the best technical writer.' },
     ],
   }));
   store.on('addNote', ({ notes }, note) => {
